@@ -114,7 +114,7 @@ mbobj = bpy.data.objects.new("Sphere", mbdata)
 bpy.context.collection.objects.link(mbobj)
 # Add a material to the metaball.
 mat = bpy.data.materials.new(name='SphereMaterial')
-mat.diffuse_color = (0.0, 0.5, 1.0, alph)
+mat.diffuse_color = (1.0, 0.214041, 0.214041, alph)
 mbobj.data.materials.append(mat)
 
 for i in range(0, latitude, 1):
@@ -173,9 +173,16 @@ for i in range(0, latitude, 1):
             currframe += fincr
             
 
-bpy.ops.object.camera_add(enter_editmode=False, align='VIEW', location=(-3.2947700023651123, -51.51686096191406, -0.7010366916656494), rotation=(-1.5743393898010254, 0.000106481667899061, 3.0613579750061035))
+bpy.ops.object.camera_add(enter_editmode=False, align='VIEW', location=(-3.2947700023651123, -51.51686096191406, -0.7010366916656494), rotation=(1.5743393898010254, 0.000106481667899061, -0.08023278415203094))
 bpy.ops.object.light_add(type='SUN', radius=1, location=(0, 0, 0))
-bpy.data.lights['Sun.003'].color = (0.72445148229599, 1.0, 0.0)
+bpy.context.object.data.color = (0.0, 1.0, 1.0)
+bpy.context.object.data.energy = 10
+bpy.ops.object.light_add(type='POINT', radius=1, location=(0, -4, 0))
+bpy.context.object.data.color = (0.0645496, 0, 1)
+bpy.context.object.data.energy = 1000
 bpy.context.scene.render.engine = 'CYCLES'
 bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = (0.132864, 0.132864, 0.132864, 1)
 bpy.context.scene.render.film_transparent = True
+
+
+bpy.context.object.data.color = (0.0645496, 0, 1)
