@@ -185,4 +185,4 @@ bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value =
 bpy.context.scene.render.film_transparent = True
 
 
-bpy.context.object.data.color = (0.0645496, 0, 1)
+
